@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vindcorp – Prosjekter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #fff;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 30px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #4ecdc4;
+    }
+
+    .intro {
+      padding: 140px 20px 60px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #dcdcdc;
+    }
+
+    .highlight {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 1.4rem;
+      color: #4ecdc4;
+      font-weight: bold;
+    }
+
+    .project {
+      padding: 60px 20px 60px;
+      text-align: center;
+    }
+
+    .project a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .project img {
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .project img:hover {
+      transform: scale(1.03);
+    }
+
+    .project h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .project p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #dcdcdc;
+      line-height: 1.6;
+    }
+
+    .coming {
+      padding: 60px 20px 80px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .coming h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scroll-behavior: smooth;
+    }
+
+    .scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .coming-card {
+      flex: 0 0 250px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .coming-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-content img {
+      width: 80px;
+    }
+
+    @media (max-width: 600px) {
+      .intro h1 {
+        font-size: 2rem;
+      }
+      .project h2 {
+        font-size: 1.8rem;
+      }
+      .intro p,
+      .project p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigasjon -->
+  <nav>
+    <a href="index.html">Forside</a>
+    <a href="tjenester.html">Tjenester</a>
+    <a href="prosjekter.html">Prosjekter</a>
+    <a href="#">Kontakt</a>
+  </nav>
+
+  <!-- Intro -->
+  <section class="intro">
+    <h1>Våre prosjekter</h1>
+    <p>Her er et innblikk i arbeidet vi har gjort for kundene våre. Vindcorp leverer moderne, elegante og brukervennlige nettsider som skaper resultater.</p>
+  </section>
+
+  <!-- Highlight -->
+  <section class="highlight">Utvalgt prosjekt: Holth Catering</section>
+
+  <!-- Holth Catering -->
+  <section class="project">
+    <a href="https://holth-catering.no/" target="_blank">
+      <img src="Bilder/holth1.jpg" alt="Holth Catering hjemmeside" />
+    </a>
+    <h2>Holth Catering</h2>
+    <p>
+      Vi designet og utviklet en skreddersydd nettside for Holth Catering. Siden fokuserer på menyer, bestilling og en profesjonell presentasjon av selskapet.
+      Den er responsiv, rask og gir et sterkt førsteinntrykk.
+    </p>
+  </section>
+
+  <!-- Kommende prosjekter -->
+  <section class="coming">
+    <h2>Kommende prosjekter</h2>
+    <div class="scroll">
+      <div class="coming-card">Prosjekt 2 (kommer)</div>
+      <div class="coming-card">Prosjekt 3 (kommer)</div>
+      <div class="coming-card">Prosjekt 4 (kommer)</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <img src="Bilder/logo2.png" alt="Vindcorp logo" />
+      <p>© 2025 Vindcorp – Moderne nettsider for små og mellomstore bedrifter</p>
+    </div>
+  </footer>
+
+</body>
+</html>

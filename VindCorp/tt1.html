@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindcorp Logo Effekt</title>
+    <style>
+        /* Reset og bakgrunn */
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #0d0d0d, #000);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Container for hele effekten */
+        .logo-wrapper {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            animation: breathe 6s infinite ease-in-out;
+        }
+
+        /* Lysstråle bakgrunn */
+        .light-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                from 0deg,
+                rgba(192,192,192,0.1),
+                rgba(192,192,192,0.3),
+                rgba(192,192,192,0.1) 90deg,
+                rgba(192,192,192,0.05) 180deg
+            );
+            border-radius: 50%;
+            animation: spin-rays 8s linear infinite;
+            filter: blur(30px);
+            z-index: 0;
+        }
+
+        /* Selve V-logoen */
+        .logo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('Bilder/logo1.png') no-repeat center;
+            background-size: contain;
+            animation: zoomIn 1.5s ease-out forwards, rotate3d 12s infinite linear;
+            z-index: 2;
+        }
+
+        /* Glitch-effekt – linjer som blinker over logoen */
+        .glitch-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(192,192,192,0.5);
+            animation: glitchMove 2s infinite;
+            z-index: 3;
+        }
+
+        .glitch-line:nth-child(1) {
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .glitch-line:nth-child(2) {
+            top: 50%;
+            animation-delay: 0.7s;
+        }
+
+        .glitch-line:nth-child(3) {
+            top: 80%;
+            animation-delay: 1.4s;
+        }
+
+        /* Animasjoner */
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes spin-rays {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes glitchMove {
+            0% { transform: translateX(-100%); opacity: 0; }
+            30% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-wrapper">
+        <div class="light-rays"></div>
+        <div class="logo"></div>
+        <div class="glitch-line"></div>
+        <div class="glitch-line"></div>
+        <div class="glitch-line"></div>
+    </div>
+
+    <script>
+        // Parallax-effekt på musbevegelse
+        const wrapper = document.querySelector('.logo-wrapper');
+        document.addEventListener('mousemove', (e) => {
+            let x = (window.innerWidth / 2 - e.pageX) / 30;
+            let y = (window.innerHeight / 2 - e.pageY) / 30;
+            wrapper.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
+        });
+    </script>
+</body>
+</html>
