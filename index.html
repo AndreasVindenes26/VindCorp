@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindcorp – Nettsider for bedrifter</title>
+    <style>
+        /* Nullstill og bakgrunn */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Navigasjon */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: rgba(0,0,0,0.8);
+            padding: 15px 0;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            z-index: 100;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #4ecdc4;
+        }
+
+        /* Fullscreen logo intro */
+        .intro-logo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            z-index: 10;
+            transition: opacity 1s ease;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            animation: breathe 6s infinite ease-in-out;
+        }
+
+        /* Lysstråler bak logo */
+        .light-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                from 0deg,
+                rgba(192,192,192,0.1),
+                rgba(192,192,192,0.3),
+                rgba(192,192,192,0.1) 90deg,
+                rgba(192,192,192,0.05) 180deg
+            );
+            border-radius: 50%;
+            animation: spin-rays 8s linear infinite;
+            filter: blur(30px);
+            z-index: 0;
+        }
+
+        /* Selve V-logoen */
+        .logo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('Bilder/logo1.png') no-repeat center;
+            background-size: contain;
+            animation: zoomIn 1.5s ease-out forwards, rotate3d 12s infinite linear;
+            z-index: 2;
+        }
+
+        /* Glitch-linjer – vekselvis fra venstre og høyre */
+        .glitch-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(192,192,192,0.5);
+            animation: glitchMove 4s infinite;
+            z-index: 3;
+        }
+
+        .glitch-line:nth-child(3) {
+            top: 20%;
+            animation-delay: 0s;
+            animation-name: glitchMoveLeft;
+        }
+
+        .glitch-line:nth-child(4) {
+            top: 50%;
+            animation-delay: 1.5s;
+            animation-name: glitchMoveRight;
+        }
+
+        .glitch-line:nth-child(5) {
+            top: 80%;
+            animation-delay: 3s;
+            animation-name: glitchMoveLeft;
+        }
+
+        /* Keyframes for venstre og høyre */
+        @keyframes glitchMoveLeft {
+            0%   { transform: translateX(-120%); opacity: 0; }
+            15%  { opacity: 1; }
+            50%  { transform: translateX(0%); opacity: 1; }
+            85%  { opacity: 1; }
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes glitchMoveRight {
+            0%   { transform: translateX(120%); opacity: 0; }
+            15%  { opacity: 1; }
+            50%  { transform: translateX(0%); opacity: 1; }
+            85%  { opacity: 1; }
+            100% { transform: translateX(-120%); opacity: 0; }
+        }
+
+        /* Zoom + rotasjon */
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes spin-rays {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Hero-tekstseksjon */
+        .hero {
+            margin-top: 100vh;
+            text-align: center;
+            padding: 100px 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .hero.show {
+            opacity: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #dcdcdc;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #4ecdc4;
+            color: #0d0d0d;
+            padding: 14px 35px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: #38b2a6;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.6);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-content img {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasjon -->
+    <nav>
+        <a href="index.html">Forside</a>
+        <a href="tjenester.html">Tjenester</a>
+        <a href="prosjekter.html">Prosjekter</a>
+        <a href="kontakt.html">Kontakt</a>
+    </nav>
+
+    <!-- Intro-logo -->
+    <div class="intro-logo" id="intro-logo">
+        <div class="logo-wrapper">
+            <div class="light-rays"></div>
+            <div class="logo"></div>
+            <div class="glitch-line"></div>
+            <div class="glitch-line"></div>
+            <div class="glitch-line"></div>
+        </div>
+    </div>
+
+    <!-- Hero-tekstseksjon -->
+    <div class="hero" id="hero-text">
+        <h1>Moderne nettsider som får din bedrift til å skille seg ut</h1>
+        <p>Vindcorp lager profesjonelle og brukervennlige nettsider skreddersydd for små og mellomstore bedrifter. Vi gir deg en moderne og profesjonell tilstedeværelse på nett – uten stress.</p>
+        <a href="#kontakt" class="cta-btn">Kontakt oss</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="Bilder/logo2.png" alt="Vindcorp logo">
+            <p>© 2025 Vindcorp – Moderne nettsider for små og mellomstore bedrifter</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fader ut intro og viser tekst når man scroller
+        window.addEventListener('scroll', () => {
+            const intro = document.getElementById('intro-logo');
+            const hero = document.getElementById('hero-text');
+            if(window.scrollY > 50){
+                intro.style.opacity = '0';
+                hero.classList.add('show');
+            } else {
+                intro.style.opacity = '1';
+                hero.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
