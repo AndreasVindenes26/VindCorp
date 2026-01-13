@@ -11,6 +11,7 @@
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
       color: #fff;
+      overflow-x: hidden;
     }
 
     nav {
@@ -31,6 +32,7 @@
       margin: 0 30px;
       font-size: 1.1rem;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
 
     nav a:hover {
@@ -42,6 +44,7 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -71,6 +74,7 @@
       color: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.4);
       transition: transform 0.3s ease;
+      word-break: break-word;
     }
 
     .info-card:hover {
@@ -119,18 +123,52 @@
       width: 80px;
     }
 
-    @media (max-width: 600px) {
+    /* ========================= */
+    /* MOBIL-FIKS (kun mobil)    */
+    /* ========================= */
+    @media (max-width: 768px) {
+      nav {
+        justify-content: space-around;
+        padding: 12px 8px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 6px 10px;
+        font-size: 0.95rem;
+      }
+
+      .contact-container {
+        padding: 130px 18px 70px;
+      }
+
       h1 {
         font-size: 2rem;
       }
 
       p {
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
 
       .info-card {
-        font-size: 1rem;
+        font-size: 1.05rem;
         padding: 20px;
+      }
+
+      .cta-btn {
+        font-size: 1.05rem;
+        padding: 12px 28px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      nav a {
+        margin: 6px 6px;
+        font-size: 0.9rem;
+      }
+
+      .contact-container {
+        padding: 125px 14px 65px;
       }
     }
   </style>
@@ -152,7 +190,14 @@
 
     <div class="contact-info">
       <div class="info-card">📞 Telefon: <strong>908 81 719</strong></div>
-      <div class="info-card">📧 E-post: <strong><a href="mailto:vindenesandreas@gmail.com" style="color: #4ecdc4; text-decoration: none;">vindenesandreas@gmail.com</a></strong></div>
+      <div class="info-card">
+        📧 E-post:
+        <strong>
+          <a href="mailto:vindenesandreas@gmail.com" style="color: #4ecdc4; text-decoration: none;">
+            vindendesandreas@gmail.com
+          </a>
+        </strong>
+      </div>
     </div>
 
     <a href="mailto:vindenesandreas@gmail.com" class="cta-btn">Send e-post</a>
