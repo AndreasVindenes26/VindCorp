@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vindcorp – Tjenester</title>
+
     <style>
         /* Grunnstil */
         body {
@@ -18,26 +19,33 @@
             overflow-x: hidden;
         }
 
-        /* Navigasjon */
+        /* ✅ NAV – responsiv */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;                 /* ✅ wrap på mobil */
+            gap: 10px;                       /* ✅ jevn spacing */
             background: rgba(0,0,0,0.8);
-            padding: 15px 0;
+            padding: 12px 10px;              /* ✅ bedre på mobil */
             backdrop-filter: blur(6px);
             box-shadow: 0 2px 6px rgba(0,0,0,0.6);
             z-index: 100;
+            box-sizing: border-box;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 30px;
-            font-size: 1.1rem;
+            margin: 0;                       /* ✅ fjernet 0 30px */
+            font-size: 1.05rem;
             transition: color 0.3s ease;
+            padding: 6px 10px;               /* ✅ større klikk-område */
+            border-radius: 10px;
+            white-space: nowrap;             /* ✅ hindrer deling av ord */
         }
 
         nav a:hover {
@@ -51,8 +59,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 20px;
+            padding: 120px 20px 20px;        /* plass til fixed nav */
             animation: fadeIn 1.5s ease-out;
+            box-sizing: border-box;
         }
 
         .logo {
@@ -92,7 +101,8 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            padding: 80px 20px 100px; /* Mer plass over, mindre nederst */
+            padding: 80px 20px 100px;
+            box-sizing: border-box;
         }
 
         /* Kort utgangspunkt */
@@ -101,10 +111,13 @@
             border-radius: 12px;
             padding: 25px;
             max-width: 300px;
+            width: 100%;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
             opacity: 0;
             transform: translateY(-150px);
+            transition: transform 0.3s ease, background 0.3s ease;
+            box-sizing: border-box;
         }
 
         /* Når kortet skal vises */
@@ -126,11 +139,10 @@
             100% { transform: translateY(0); }
         }
 
-        /* Hover-effekt */
+        /* Hover-effekt (PC) */
         .service-card:hover {
             transform: scale(1.05);
             background: rgba(255,255,255,0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .service-card h2 {
@@ -143,6 +155,7 @@
             font-size: 1rem;
             color: #dcdcdc;
             line-height: 1.4;
+            max-width: 100%;
         }
 
         /* Footer */
@@ -152,33 +165,73 @@
             background: rgba(0,0,0,0.6);
             font-size: 0.9rem;
             color: #aaa;
+            box-sizing: border-box;
         }
 
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px; /* Mellomrom mellom logo og tekst */
+            gap: 10px;
         }
 
         .footer-content img {
             width: 80px;
         }
 
-        /* Responsivt */
+        /* ✅ Responsivt */
         @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8rem;
+            nav a {
+                font-size: 0.95rem;
+                padding: 6px 8px;
             }
+
+            .hero {
+                padding: 115px 16px 10px;
+            }
+
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+            }
+
             .logo {
                 width: 150px;
                 height: 150px;
             }
+
+            .services {
+                padding: 60px 16px 80px;
+                gap: 18px;
+            }
+
+            .service-card {
+                max-width: 520px; /* ✅ fyller mer av skjermen på mobil */
+                padding: 20px;
+            }
+
+            /* ✅ på touch-mobil kan hover føles rart – gjør den mildere */
+            .service-card:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        @media (max-width: 380px) {
+            nav {
+                gap: 8px;
+            }
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 7px;
+            }
         }
     </style>
 </head>
-<body>
 
+<body>
     <!-- Navigasjon -->
     <nav>
         <a href="index.html">Forside</a>
@@ -191,7 +244,11 @@
     <div class="hero">
         <div class="logo"></div>
         <h1>Våre tjenester</h1>
-        <p>Vi hjelper små og mellomstore bedrifter med å skape moderne og brukervennlige nettsider som gir et profesjonelt førsteinntrykk og øker synligheten deres på nettet. Nettsidene våre er også perfekte å bruke i en LinkedIn-bio, på visittkort eller andre steder der man ønsker å dele en enkel og tydelig lenke</p>
+        <p>
+            Vi hjelper små og mellomstore bedrifter med å skape moderne og brukervennlige nettsider som gir et profesjonelt
+            førsteinntrykk og øker synligheten deres på nettet. Nettsidene våre er også perfekte å bruke i en LinkedIn-bio,
+            på visittkort eller andre steder der man ønsker å dele en enkel og tydelig lenke
+        </p>
     </div>
 
     <!-- Tjenestekort -->
@@ -210,8 +267,6 @@
             <h2>Vedlikehold</h2>
             <p>Vi sørger for at nettsiden din alltid er oppdatert og fungerer problemfritt, slik at du kan fokusere på driften.</p>
         </div>
-
-        
     </div>
 
     <!-- Footer -->
@@ -227,18 +282,15 @@
         const cards = document.querySelectorAll('.service-card');
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Legg til synlig + start animasjon
                     entry.target.classList.add('visible');
                     entry.target.classList.add('animate');
 
-                    // Fjern animate etter animasjonen er ferdig (så vi kan trigge på nytt)
                     setTimeout(() => {
                         entry.target.classList.remove('animate');
                     }, 1000);
                 } else {
-                    // Fjern synlighet når ute av view
                     entry.target.classList.remove('visible');
                 }
             });
@@ -246,6 +298,5 @@
 
         cards.forEach(card => observer.observe(card));
     </script>
-
 </body>
 </html>
