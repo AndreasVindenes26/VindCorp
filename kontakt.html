@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vindcorp – Kontakt oss</title>
+
   <style>
     body {
       margin: 0;
@@ -14,25 +15,33 @@
       overflow-x: hidden;
     }
 
+    /* ✅ NAV – responsiv som på forsiden */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;                 /* ✅ lar meny gå til ny linje */
+      gap: 10px;                       /* ✅ jevn spacing uten å bli for bred */
       background: rgba(0,0,0,0.8);
-      padding: 15px 0;
+      padding: 12px 10px;              /* ✅ bedre for mobil */
       z-index: 100;
       backdrop-filter: blur(6px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      box-sizing: border-box;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 30px;
-      font-size: 1.1rem;
+      margin: 0;                       /* ✅ fjernet 30px margin */
+      font-size: 1.05rem;
       transition: color 0.3s ease;
       white-space: nowrap;
+      padding: 6px 10px;               /* ✅ større klikk-område */
+      border-radius: 10px;
     }
 
     nav a:hover {
@@ -40,7 +49,7 @@
     }
 
     .contact-container {
-      padding: 140px 20px 80px;
+      padding: 140px 20px 80px;        /* plass til fixed nav */
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
@@ -123,23 +132,15 @@
       width: 80px;
     }
 
-    /* ========================= */
-    /* MOBIL-FIKS (kun mobil)    */
-    /* ========================= */
-    @media (max-width: 768px) {
-      nav {
-        justify-content: space-around;
-        padding: 12px 8px;
-        flex-wrap: wrap;
-      }
-
+    /* ✅ MOBIL */
+    @media (max-width: 600px) {
       nav a {
-        margin: 6px 10px;
         font-size: 0.95rem;
+        padding: 6px 8px;
       }
 
       .contact-container {
-        padding: 130px 18px 70px;
+        padding: 130px 16px 70px;
       }
 
       h1 {
@@ -162,9 +163,13 @@
     }
 
     @media (max-width: 380px) {
+      nav {
+        gap: 8px;
+      }
+
       nav a {
-        margin: 6px 6px;
         font-size: 0.9rem;
+        padding: 6px 7px;
       }
 
       .contact-container {
@@ -173,8 +178,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Navigasjon -->
   <nav>
     <a href="index.html">Forside</a>
@@ -189,7 +194,16 @@
     <p>Trenger du en profesjonell og moderne nettside? Ta kontakt for en uforpliktende prat!</p>
 
     <div class="contact-info">
-      <div class="info-card">📞 Telefon: <strong>908 81 719</strong></div>
+      <!-- ✅ klikbar telefon på mobil -->
+      <div class="info-card">
+        📞 Telefon:
+        <strong>
+          <a href="tel:+4790881719" style="color:#4ecdc4; text-decoration:none;">
+            908 81 719
+          </a>
+        </strong>
+      </div>
+
       <div class="info-card">
         📧 E-post:
         <strong>
@@ -210,6 +224,5 @@
       <p>© 2025 Vindcorp – Moderne nettsider for små og mellomstore bedrifter</p>
     </div>
   </footer>
-
 </body>
 </html>
