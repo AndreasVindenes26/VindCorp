@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vindcorp – Nettsider for bedrifter</title>
+
     <style media="screen">
         /* Nullstill og bakgrunn */
         body {
@@ -24,8 +24,11 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;                 /* ✅ VIKTIG: lar tekst gå til ny linje på mobil */
+            gap: 10px;                       /* ✅ jevn spacing uten å bli for bred */
             background: rgba(0,0,0,0.8);
-            padding: 15px 0;
+            padding: 12px 10px;              /* ✅ mindre padding så det passer mobil */
             backdrop-filter: blur(6px);
             box-shadow: 0 2px 6px rgba(0,0,0,0.6);
             z-index: 100;
@@ -34,9 +37,12 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 30px;
-            font-size: 1.1rem;
+            margin: 0;                       /* ✅ fjernet 30px margin som ødelegger på mobil */
+            font-size: 1.05rem;
             transition: color 0.3s ease;
+            padding: 6px 10px;               /* ✅ større klikk-område på mobil */
+            border-radius: 10px;
+            white-space: nowrap;             /* ✅ hindrer at “Prosjekter” deles i to */
         }
 
         nav a:hover {
@@ -94,7 +100,7 @@
             z-index: 2;
         }
 
-        /* Glitch-linjer – vekselvis fra venstre og høyre */
+        /* Glitch-linjer */
         .glitch-line {
             position: absolute;
             width: 100%;
@@ -122,7 +128,6 @@
             animation-name: glitchMoveLeft;
         }
 
-        /* Keyframes for venstre og høyre */
         @keyframes glitchMoveLeft {
             0%   { transform: translateX(-120%); opacity: 0; }
             15%  { opacity: 1; }
@@ -139,7 +144,6 @@
             100% { transform: translateX(-120%); opacity: 0; }
         }
 
-        /* Zoom + rotasjon */
         @keyframes zoomIn {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -220,6 +224,36 @@
         .footer-content img {
             width: 80px;
         }
+
+        /* ✅ MOBIL: ekstra tilpasning */
+        @media (max-width: 600px) {
+            nav a {
+                font-size: 0.95rem;
+                padding: 6px 8px;
+            }
+
+            .logo-wrapper {
+                width: 240px;   /* ✅ mindre logo så den passer alle mobiler */
+                height: 240px;
+            }
+
+            .hero {
+                padding: 70px 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .cta-btn {
+                font-size: 1.05rem;
+                padding: 12px 26px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -263,12 +297,15 @@
         window.addEventListener('scroll', () => {
             const intro = document.getElementById('intro-logo');
             const hero = document.getElementById('hero-text');
+
             if(window.scrollY > 50){
                 intro.style.opacity = '0';
                 hero.classList.add('show');
+                intro.style.pointerEvents = 'none';
             } else {
                 intro.style.opacity = '1';
                 hero.classList.remove('show');
+                intro.style.pointerEvents = 'auto';
             }
         });
     </script>
