@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
             color: #fff;
             display: flex;
@@ -18,7 +18,7 @@
             overflow-x: hidden;
         }
 
-        /* ✅ NAV – mobilvennlig */
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -28,7 +28,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             padding: 12px 10px;
             backdrop-filter: blur(6px);
             box-shadow: 0 2px 6px rgba(0,0,0,0.6);
@@ -39,7 +39,6 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0; /* viktig */
             font-size: 1.05rem;
             transition: color 0.3s ease;
             padding: 6px 10px;
@@ -51,14 +50,14 @@
             color: #4ecdc4;
         }
 
-        /* Intro-seksjon */
+        /* Intro */
         .intro {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 160px 20px 80px;
+            padding: 160px 20px 70px;
             animation: fadeIn 1.5s ease-out;
             box-sizing: border-box;
         }
@@ -71,7 +70,7 @@
 
         .intro p {
             font-size: 1.3rem;
-            max-width: 700px;
+            max-width: 720px;
             color: #dcdcdc;
             line-height: 1.6;
             margin: 0;
@@ -82,104 +81,131 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Highlight før prosjekt */
-        .highlight {
+        /* Prosjekter */
+        .projects-section {
+            padding: 20px 0 90px;
+            background: rgba(255,255,255,0.03);
+            overflow: hidden;
+        }
+
+        .projects-section h2 {
             text-align: center;
-            padding: 30px 20px;
-            background: rgba(255,255,255,0.04);
-            font-size: 1.5rem;
+            margin: 0 0 35px;
+            font-size: 2.2rem;
             color: #4ecdc4;
-            font-weight: bold;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            animation: fadeIn 2s ease-out;
-            box-sizing: border-box;
         }
 
-        /* Holth Catering hero */
-        .hero-project {
+        .scroll-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-track {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 20px 40px;
-            box-sizing: border-box;
+            gap: 24px;
+            width: max-content;
+            padding: 10px 20px;
+            animation: projectLoop 22s linear infinite;
         }
 
-        .hero-project img {
-            width: 90%;
-            max-width: 1000px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            animation: zoomIn 1.2s ease-out;
+        /* Stopper hele loopen når man holder over området */
+        .scroll-wrapper:hover .scroll-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes projectLoop {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .project-card {
+            flex: 0 0 320px;
+            height: 220px;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: block;
         }
 
-        @keyframes zoomIn {
-            0% { transform: scale(0.95); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.55);
         }
 
-        .hero-project h2 {
-            font-size: 2.2rem;
-            margin: 30px 0 15px;
-            color: #4ecdc4;
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .hero-project p {
-            max-width: 700px;
-            font-size: 1.2rem;
-            color: #dcdcdc;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ✅ Kommende prosjekter (beholdt) */
-        .coming-soon {
-            padding: 50px 0 80px;
-            background: rgba(255,255,255,0.03);
-        }
-
-        .coming-soon h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            color: #4ecdc4;
-        }
-
-        .scroll-container {
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18));
             display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 0 20px;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .coming-card {
-            flex: 0 0 250px;
-            height: 150px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 16px;
-            font-size: 1.15rem;
-            color: #aaa;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease, background 0.3s ease;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
             box-sizing: border-box;
         }
 
+        .project-overlay h3 {
+            margin: 0 0 8px;
+            font-size: 1.45rem;
+            color: #4ecdc4;
+        }
+
+        .project-overlay p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.45;
+            color: #e2e2e2;
+        }
+
+        .coming-card {
+            flex: 0 0 320px;
+            height: 220px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            box-sizing: border-box;
+            color: #bcbcbc;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
         .coming-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             background: rgba(255,255,255,0.08);
+        }
+
+        .coming-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.4rem;
+            color: #4ecdc4;
+        }
+
+        .coming-card p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #cfcfcf;
         }
 
         /* Footer */
@@ -204,15 +230,15 @@
             width: 80px;
         }
 
-        /* ✅ Mobil */
-        @media (max-width: 600px) {
+        /* Mobil */
+        @media (max-width: 700px) {
             nav a {
                 font-size: 0.95rem;
                 padding: 6px 8px;
             }
 
             .intro {
-                padding: 135px 16px 60px;
+                padding: 135px 16px 55px;
             }
 
             .intro h1 {
@@ -223,48 +249,51 @@
                 font-size: 1.05rem;
             }
 
-            .highlight {
-                font-size: 1.15rem;
-                padding: 22px 16px;
-            }
-
-            .hero-project {
-                padding: 60px 16px 30px;
-            }
-
-            .hero-project h2 {
+            .projects-section h2 {
                 font-size: 1.8rem;
             }
 
-            .hero-project p {
-                font-size: 1.05rem;
+            .scroll-track {
+                gap: 16px;
+                padding: 10px 16px;
+                animation-duration: 18s;
             }
 
-            .coming-soon h2 {
-                font-size: 1.6rem;
-            }
-
-            .scroll-container {
-                padding: 0 16px;
-                gap: 14px;
-            }
-
+            .project-card,
             .coming-card {
-                flex: 0 0 230px;
-                height: 145px;
-                font-size: 1.05rem;
+                flex: 0 0 260px;
+                height: 190px;
             }
 
-            .coming-card:hover {
-                transform: translateY(-3px);
+            .project-overlay {
+                padding: 16px;
+            }
+
+            .project-overlay h3,
+            .coming-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-overlay p,
+            .coming-card p {
+                font-size: 0.95rem;
             }
         }
 
         @media (max-width: 380px) {
-            nav { gap: 8px; }
+            nav {
+                gap: 8px;
+            }
+
             nav a {
                 font-size: 0.9rem;
                 padding: 6px 7px;
+            }
+
+            .project-card,
+            .coming-card {
+                flex: 0 0 230px;
+                height: 175px;
             }
         }
     </style>
@@ -283,30 +312,65 @@
     <!-- Intro -->
     <section class="intro">
         <h1>Våre prosjekter</h1>
-        <p>Vi bygger unike nettsider som gjør at kundene våre skiller seg ut. Her får du et innblikk i hva vi har laget – og hva du kan forvente når du velger Vindcorp.</p>
+        <p>Her kan du se prosjektene vi har laget, og få et inntrykk av stilen, kvaliteten og uttrykket vi bygger for kundene våre.</p>
     </section>
 
-    <!-- Highlight før prosjekt -->
-    <section class="highlight">
-        Først ut: Holth Catering
-    </section>
+    <!-- Prosjekter -->
+    <section class="projects-section">
+        <h2>Prosjekter</h2>
 
-    <!-- Holth Catering showcase (BEHOLDT) -->
-    <section class="hero-project">
-        <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
-        <h2>Holth Catering</h2>
-        <p>En moderne og elegant nettside for Holth Catering – med fokus på menyer, bestilling og profesjonell presentasjon av selskapet. Nettsiden er fullt responsiv og optimalisert for både mobil og desktop.</p>
-    </section>
+        <div class="scroll-wrapper">
+            <div class="scroll-track">
 
-    <!-- ✅ FJERNET: Bildegalleriet med holth2/holth3/holth4 -->
+                <!-- Sett 1 -->
+                <a href="https://holth-catering.no/" class="project-card">
+                    <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
+                    <div class="project-overlay">
+                        <h3>Holth Catering</h3>
+                        <p>Se prosjektet</p>
+                    </div>
+                </a>
 
-    <!-- Kommende prosjekter (BEHOLDT) -->
-    <section class="coming-soon">
-        <h2>Kommende prosjekter</h2>
-        <div class="scroll-container">
-            <div class="coming-card">Prosjekt 2 (kommer snart)</div>
-            <div class="coming-card">Prosjekt 3 (kommer snart)</div>
-            <div class="coming-card">Prosjekt 4 (kommer snart)</div>
+                <div class="coming-card">
+                    <h3>Prosjekt 2</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+                <div class="coming-card">
+                    <h3>Prosjekt 3</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+                <div class="coming-card">
+                    <h3>Prosjekt 4</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+                <!-- Sett 2 for seamless loop -->
+                <a href="https://holth-catering.no/" class="project-card">
+                    <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
+                    <div class="project-overlay">
+                        <h3>Holth Catering</h3>
+                        <p>Se prosjektet</p>
+                    </div>
+                </a>
+
+                <div class="coming-card">
+                    <h3>Prosjekt 2</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+                <div class="coming-card">
+                    <h3>Prosjekt 3</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+                <div class="coming-card">
+                    <h3>Prosjekt 4</h3>
+                    <p>Kommer snart</p>
+                </div>
+
+            </div>
         </div>
     </section>
 
