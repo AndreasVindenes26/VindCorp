@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ✅ NAV – responsiv */
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -27,12 +27,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;                 /* ✅ wrap på mobil */
-            gap: 10px;                       /* ✅ jevn spacing */
-            background: rgba(0,0,0,0.8);
-            padding: 12px 10px;              /* ✅ bedre på mobil */
-            backdrop-filter: blur(6px);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            flex-wrap: wrap;
+            gap: 10px;
+            background: rgba(0,0,0,0.82);
+            padding: 12px 10px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.45);
             z-index: 100;
             box-sizing: border-box;
         }
@@ -40,37 +40,111 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0;                       /* ✅ fjernet 0 30px */
+            margin: 0;
             font-size: 1.05rem;
-            transition: color 0.3s ease;
-            padding: 6px 10px;               /* ✅ større klikk-område */
+            transition: color 0.3s ease, background 0.3s ease;
+            padding: 6px 10px;
             border-radius: 10px;
-            white-space: nowrap;             /* ✅ hindrer deling av ord */
+            white-space: nowrap;
         }
 
         nav a:hover {
             color: #4ecdc4;
+            background: rgba(255,255,255,0.04);
         }
 
-        /* Hero-seksjon */
+        /* HERO */
         .hero {
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 20px;        /* plass til fixed nav */
-            animation: fadeIn 1.5s ease-out;
+            padding: 150px 20px 70px;
+            animation: fadeIn 1.2s ease-out;
             box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(78,205,196,0.12), transparent 30%),
+                radial-gradient(circle at 80% 30%, rgba(78,205,196,0.07), transparent 28%),
+                radial-gradient(circle at 50% 80%, rgba(255,255,255,0.04), transparent 35%);
+            pointer-events: none;
         }
 
         .logo {
-            width: 200px;
-            height: 200px;
+            width: 170px;
+            height: 170px;
             background: url('Bilder/logo1.png') no-repeat center;
             background-size: contain;
             animation: spin 12s linear infinite;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 18px rgba(78,205,196,0.12));
+        }
+
+        .hero-text-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .hero-title-main {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1.02;
+            font-weight: 600;
+            margin: 0;
+            color: #f7f4ec;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+
+        .hero-title-sub {
+            margin-top: 8px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(2.3rem, 6vw, 4.8rem);
+            line-height: 1.08;
+            font-style: italic;
+            font-weight: 400;
+            min-height: 1.3em;
+            color: #ffffff;
+        }
+
+        .hero-title-sub .static-word {
+            color: #f2eee6;
+        }
+
+        .hero-title-sub .changing-word {
+            color: #4ecdc4;
+            font-style: italic;
+            font-weight: 500;
+            text-shadow: 0 0 18px rgba(78,205,196,0.18);
+        }
+
+        .cursor {
+            display: inline-block;
+            color: #4ecdc4;
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+            transform: translateY(-1px);
+            text-shadow: 0 0 14px rgba(78,205,196,0.15);
+        }
+
+        .hero-description {
+            max-width: 820px;
+            margin: 28px auto 0;
+            font-size: 1.16rem;
+            line-height: 1.8;
+            color: #d7d7d7;
         }
 
         @keyframes spin {
@@ -83,16 +157,9 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 15px 0 10px;
-            max-width: 700px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            color: #dcdcdc;
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
         }
 
         /* Tjenestekort-container */
@@ -101,37 +168,34 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            padding: 80px 20px 100px;
+            padding: 40px 20px 100px;
             box-sizing: border-box;
         }
 
-        /* Kort utgangspunkt */
         .service-card {
             background: rgba(255,255,255,0.05);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 25px;
             max-width: 300px;
             width: 100%;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.06);
             opacity: 0;
             transform: translateY(-150px);
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             box-sizing: border-box;
         }
 
-        /* Når kortet skal vises */
         .service-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Når animasjonen skal kjøre */
         .service-card.animate {
             animation: dropBounce 1s ease forwards;
         }
 
-        /* Drop + bounce animasjon */
         @keyframes dropBounce {
             0% { opacity: 0; transform: translateY(-150px); }
             60% { opacity: 1; transform: translateY(20px); }
@@ -139,10 +203,11 @@
             100% { transform: translateY(0); }
         }
 
-        /* Hover-effekt (PC) */
         .service-card:hover {
             transform: scale(1.05);
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.09);
+            border-color: rgba(78,205,196,0.28);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
         }
 
         .service-card h2 {
@@ -154,8 +219,9 @@
         .service-card p {
             font-size: 1rem;
             color: #dcdcdc;
-            line-height: 1.4;
+            line-height: 1.5;
             max-width: 100%;
+            margin: 0;
         }
 
         /* Footer */
@@ -166,6 +232,7 @@
             font-size: 0.9rem;
             color: #aaa;
             box-sizing: border-box;
+            margin-top: auto;
         }
 
         .footer-content {
@@ -177,9 +244,10 @@
 
         .footer-content img {
             width: 80px;
+            filter: drop-shadow(0 0 10px rgba(78,205,196,0.08));
         }
 
-        /* ✅ Responsivt */
+        /* Responsivt */
         @media (max-width: 600px) {
             nav a {
                 font-size: 0.95rem;
@@ -187,33 +255,31 @@
             }
 
             .hero {
-                padding: 115px 16px 10px;
-            }
-
-            h1 {
-                font-size: 1.9rem;
-            }
-
-            p {
-                font-size: 1.05rem;
+                padding: 120px 16px 50px;
             }
 
             .logo {
-                width: 150px;
-                height: 150px;
+                width: 135px;
+                height: 135px;
+                margin-bottom: 18px;
+            }
+
+            .hero-description {
+                font-size: 1.02rem;
+                line-height: 1.7;
+                margin-top: 22px;
             }
 
             .services {
-                padding: 60px 16px 80px;
+                padding: 30px 16px 80px;
                 gap: 18px;
             }
 
             .service-card {
-                max-width: 520px; /* ✅ fyller mer av skjermen på mobil */
+                max-width: 520px;
                 padding: 20px;
             }
 
-            /* ✅ på touch-mobil kan hover føles rart – gjør den mildere */
             .service-card:hover {
                 transform: translateY(-3px);
             }
@@ -223,6 +289,7 @@
             nav {
                 gap: 8px;
             }
+
             nav a {
                 font-size: 0.9rem;
                 padding: 6px 7px;
@@ -243,29 +310,38 @@
     <!-- Hero -->
     <div class="hero">
         <div class="logo"></div>
-        <h1>Våre tjenester</h1>
-        <p>
-            Vi hjelper små og mellomstore bedrifter med å skape moderne og brukervennlige nettsider som gir et profesjonelt
-            førsteinntrykk og øker synligheten deres på nettet. Nettsidene våre er også perfekte å bruke i en LinkedIn-bio,
-            på visittkort eller andre steder der man ønsker å dele en enkel og tydelig lenke
-        </p>
+
+        <div class="hero-text-wrap">
+            <h1 class="hero-title-main">Nettsider</h1>
+
+            <div class="hero-title-sub">
+                <span class="static-word">for </span>
+                <span class="changing-word" id="changing-word"></span><span class="cursor">|</span>
+            </div>
+
+            <p class="hero-description">
+                Vi lager moderne, stilrene og brukervennlige nettsider som gir et profesjonelt førsteinntrykk.
+                Enten du driver en café, restaurant eller en liten eller mellomstor bedrift, bygger vi løsninger
+                som løfter merkevaren din og gjør det enkelt for kundene dine å finne deg.
+            </p>
+        </div>
     </div>
 
     <!-- Tjenestekort -->
     <div class="services">
         <div class="service-card">
             <h2>Nettsidedesign</h2>
-            <p>Unikt og moderne design tilpasset din bedrift, med fokus på brukervennlighet og visuell identitet.</p>
+            <p>Unikt og moderne design tilpasset din bedrift, med fokus på brukervennlighet, identitet og et sterkt førsteinntrykk.</p>
         </div>
 
         <div class="service-card">
             <h2>Utvikling</h2>
-            <p>Vi bygger raske og responsive nettsider som fungerer sømløst på både mobil og PC.</p>
+            <p>Vi bygger raske og responsive nettsider som fungerer sømløst på både mobil og PC, med en løsning som ser profesjonell ut overalt.</p>
         </div>
 
         <div class="service-card">
             <h2>Vedlikehold</h2>
-            <p>Vi sørger for at nettsiden din alltid er oppdatert og fungerer problemfritt, slik at du kan fokusere på driften.</p>
+            <p>Vi sørger for at nettsiden din holder seg oppdatert, trygg og velfungerende, så du kan fokusere på driften av bedriften din.</p>
         </div>
     </div>
 
@@ -277,7 +353,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for scroll-effekt -->
+    <!-- JavaScript -->
     <script>
         const cards = document.querySelectorAll('.service-card');
 
@@ -297,6 +373,48 @@
         }, { threshold: 0.2 });
 
         cards.forEach(card => observer.observe(card));
+
+        const words = [
+            "caféer",
+            "restauranter",
+            "små bedrifter",
+            "mellomstore bedrifter",
+            "lokale virksomheter"
+        ];
+
+        const changingWord = document.getElementById("changing-word");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (!isDeleting) {
+                changingWord.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 1400);
+                    return;
+                }
+            } else {
+                changingWord.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            const speed = isDeleting ? 45 : 90;
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
     </script>
 </body>
 </html>
