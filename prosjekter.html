@@ -110,7 +110,6 @@
             animation: projectLoop 22s linear infinite;
         }
 
-        /* Stopper hele loopen når man holder over området */
         .scroll-wrapper:hover .scroll-track {
             animation-play-state: paused;
         }
@@ -209,7 +208,6 @@
             color: #cfcfcf;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -231,7 +229,6 @@
             width: 80px;
         }
 
-        /* Mobil */
         @media (max-width: 700px) {
             nav a {
                 font-size: 0.95rem;
@@ -302,7 +299,6 @@
 
 <body>
 
-    <!-- Navigasjon -->
     <nav>
         <a href="index.html">Forside</a>
         <a href="tjenester.html">Tjenester</a>
@@ -310,20 +306,17 @@
         <a href="kontakt.html">Kontakt</a>
     </nav>
 
-    <!-- Intro -->
     <section class="intro">
         <h1>Våre prosjekter</h1>
         <p>Her kan du se prosjektene vi har laget, og få et inntrykk av stilen, kvaliteten og uttrykket vi bygger for kundene våre.</p>
     </section>
 
-    <!-- Prosjekter -->
     <section class="projects-section">
         <h2>Prosjekter</h2>
 
         <div class="scroll-wrapper">
             <div class="scroll-track">
 
-                <!-- Sett 1 -->
                 <a href="https://holth-catering.no/" class="project-card">
                     <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
                     <div class="project-overlay">
@@ -332,10 +325,13 @@
                     </div>
                 </a>
 
-                <div class="coming-card">
-                    <h3>Prosjekt 2</h3>
-                    <p>Kommer snart</p>
-                </div>
+                <a href="https://vorszone.com/" class="project-card">
+                    <img src="Bilder/vorszone.png" alt="VorsZone nettside">
+                    <div class="project-overlay">
+                        <h3>VorsZone</h3>
+                        <p>Se prosjektet</p>
+                    </div>
+                </a>
 
                 <div class="coming-card">
                     <h3>Prosjekt 3</h3>
@@ -347,7 +343,6 @@
                     <p>Kommer snart</p>
                 </div>
 
-                <!-- Sett 2 for seamless loop -->
                 <a href="https://holth-catering.no/" class="project-card">
                     <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
                     <div class="project-overlay">
@@ -356,10 +351,13 @@
                     </div>
                 </a>
 
-                <div class="coming-card">
-                    <h3>Prosjekt 2</h3>
-                    <p>Kommer snart</p>
-                </div>
+                <a href="https://vorszone.com/" class="project-card">
+                    <img src="Bilder/vorszone.png" alt="VorsZone nettside">
+                    <div class="project-overlay">
+                        <h3>VorsZone</h3>
+                        <p>Se prosjektet</p>
+                    </div>
+                </a>
 
                 <div class="coming-card">
                     <h3>Prosjekt 3</h3>
@@ -375,7 +373,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <img src="Bilder/logo1.png" alt="Vindcorp logo">
