@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vindcorp – Prosjekter</title>
+
     <link rel="icon" type="image/png" href="../Bilder/favicon.png">
+
+    <!-- APP -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
 
     <style>
         body {
@@ -379,6 +384,13 @@
             <p>© 2025 Vindcorp – Moderne nettsider for små og mellomstore bedrifter</p>
         </div>
     </footer>
+
+    <!-- APP -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js");
+        }
+    </script>
 
 </body>
 </html>
