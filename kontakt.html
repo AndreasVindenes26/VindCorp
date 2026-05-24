@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vindcorp – Kontakt oss</title>
+
   <link rel="icon" type="image/png" href="../Bilder/favicon.png">
+
+  <!-- APP -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d0d0d">
 
   <style>
     body {
@@ -24,10 +29,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;                 /* ✅ lar meny gå til ny linje */
-      gap: 10px;                       /* ✅ jevn spacing uten å bli for bred */
+      flex-wrap: wrap;
+      gap: 10px;
       background: rgba(0,0,0,0.8);
-      padding: 12px 10px;              /* ✅ bedre for mobil */
+      padding: 12px 10px;
       z-index: 100;
       backdrop-filter: blur(6px);
       box-shadow: 0 2px 6px rgba(0,0,0,0.6);
@@ -37,11 +42,11 @@
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0;                       /* ✅ fjernet 30px margin */
+      margin: 0;
       font-size: 1.05rem;
       transition: color 0.3s ease;
       white-space: nowrap;
-      padding: 6px 10px;               /* ✅ større klikk-område */
+      padding: 6px 10px;
       border-radius: 10px;
     }
 
@@ -50,7 +55,7 @@
     }
 
     .contact-container {
-      padding: 140px 20px 80px;        /* plass til fixed nav */
+      padding: 140px 20px 80px;
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
@@ -225,5 +230,13 @@
       <p>© 2025 Vindcorp – Moderne nettsider for små og mellomstore bedrifter</p>
     </div>
   </footer>
+
+  <!-- APP -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
+    }
+  </script>
+
 </body>
 </html>
