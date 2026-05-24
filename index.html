@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vindcorp – Nettsider for bedrifter</title>
+
     <link rel="icon" type="image/png" href="Bilder/favicon.png">
+
+    <!-- APP -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
 
     <style media="screen">
         /* Nullstill og bakgrunn */
@@ -26,10 +31,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;                 /* ✅ VIKTIG: lar tekst gå til ny linje på mobil */
-            gap: 10px;                       /* ✅ jevn spacing uten å bli for bred */
+            flex-wrap: wrap;
+            gap: 10px;
             background: rgba(0,0,0,0.8);
-            padding: 12px 10px;              /* ✅ mindre padding så det passer mobil */
+            padding: 12px 10px;
             backdrop-filter: blur(6px);
             box-shadow: 0 2px 6px rgba(0,0,0,0.6);
             z-index: 100;
@@ -38,12 +43,12 @@
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0;                       /* ✅ fjernet 30px margin som ødelegger på mobil */
+            margin: 0;
             font-size: 1.05rem;
             transition: color 0.3s ease;
-            padding: 6px 10px;               /* ✅ større klikk-område på mobil */
+            padding: 6px 10px;
             border-radius: 10px;
-            white-space: nowrap;             /* ✅ hindrer at “Prosjekter” deles i to */
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -226,7 +231,7 @@
             width: 80px;
         }
 
-        /* ✅ MOBIL: ekstra tilpasning */
+        /* MOBIL */
         @media (max-width: 600px) {
             nav a {
                 font-size: 0.95rem;
@@ -234,7 +239,7 @@
             }
 
             .logo-wrapper {
-                width: 240px;   /* ✅ mindre logo så den passer alle mobiler */
+                width: 240px;
                 height: 240px;
             }
 
@@ -257,6 +262,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigasjon -->
@@ -310,6 +316,13 @@
             }
         });
     </script>
+
+    <!-- APP -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js");
+        }
+    </script>
+
 </body>
 </html>
-
