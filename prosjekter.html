@@ -87,8 +87,15 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .projects-section {
@@ -126,6 +133,7 @@
             0% {
                 transform: translateX(-50%);
             }
+
             100% {
                 transform: translateX(0);
             }
@@ -160,7 +168,11 @@
         .project-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18));
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.82),
+                rgba(0,0,0,0.18)
+            );
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -333,7 +345,10 @@
 
     <section class="intro">
         <h1>Våre prosjekter</h1>
-        <p>Her kan du se prosjektene vi har laget, og få et inntrykk av stilen, kvaliteten og uttrykket vi bygger for kundene våre.</p>
+        <p>
+            Her kan du se prosjektene vi har laget, og få et inntrykk av
+            stilen, kvaliteten og uttrykket vi bygger for kundene våre.
+        </p>
     </section>
 
     <section class="projects-section">
@@ -342,27 +357,46 @@
         <div class="scroll-wrapper">
             <div class="scroll-track">
 
+                <!-- HOLTH CATERING -->
                 <a href="https://holth-catering.no/" class="project-card">
-                    <img src="Bilder/holth1.jpg" alt="Holth Catering nettside">
+                    <img
+                        src="Bilder/holth1.jpg"
+                        alt="Holth Catering nettside"
+                    >
+
                     <div class="project-overlay">
                         <h3>Holth Catering</h3>
                         <p>Se prosjektet</p>
                     </div>
                 </a>
 
+                <!-- VORSZONE -->
                 <a href="https://vorszone.com/" class="project-card">
-                    <img src="Bilder/vorszone.png" alt="VorsZone nettside">
+                    <img
+                        src="Bilder/vorszone.png"
+                        alt="VorsZone nettside"
+                    >
+
                     <div class="project-overlay">
                         <h3>VorsZone</h3>
                         <p>Se prosjektet</p>
                     </div>
                 </a>
 
-                <div class="coming-card">
-                    <h3>Prosjekt 3</h3>
-                    <p>Kommer snart</p>
-                </div>
+                <!-- VIGDIS VINDENES -->
+                <a href="https://vigdisvindenes.no/" class="project-card">
+                    <img
+                        src="Bilder/vigdis.png"
+                        alt="Vigdis Vindenes Academic Profile"
+                    >
 
+                    <div class="project-overlay">
+                        <h3>Vigdis Vindenes</h3>
+                        <p>Se prosjektet</p>
+                    </div>
+                </a>
+
+                <!-- PROSJEKT 4 -->
                 <div class="coming-card">
                     <h3>Prosjekt 4</h3>
                     <p>Kommer snart</p>
